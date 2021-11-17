@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+                            form.survey_form {
+                                        margin-left: auto;
+                                        margin-right: auto;
+                                        margin-top:60px;
+                                        max-width: 450px;
+                                        background-color: #993366;
+                                        border: 30px solid gray;
+                                        border-radius: 5px;
+                                        padding: 10px;
+                                        }
+                            </style>
+<form class="survey_form" method="post">
+                                    <input class="form-control" id="age" placeholder="Возраст" name="age">
+                                    <div class="form-group">
+                                        <label>Выберите свой пол</label>
+                                        <p><input type="radio" name="gender" value="Женщина">Женский<Br>
+                                        <input type="radio" name="gender" value="Мужчина">Мужской<Br>
+                                        </div>
+                                    <input class="form-control" id="birthplace" placeholder="Место рождения" name="birthplace">
+                                    <div class="form-group">
+                                        <label>Национальность</label>
+                                        {% for n in nation %}
+                                        <div class="form-check">
+                                          <input class="form-check-input" type="radio" name="nationality" id={{n}} value={{n}} checked>
+                                          <label class="form-check-label" for={{n}}>
+                                            {{n}}
+                                          </label>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="form-group">
+                                        <label>У вас есть инвалидность?</label>
+                                        <p><input type="radio" name="disability" value=1>Да<Br>
+                                        <input type="radio" name="disability" value=0>Нет<Br>
+                                        </div>
+                                    <button type="submit" class="btn btn-secondary">Отправить</button>
+                                </form>
+{% endblock %}
